@@ -39,5 +39,5 @@ visualize_bigrams <- function(bigrams, quartil) {
     geom_node_point(color = "lightblue", size = 5) +
     geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
     theme_void() +
-    labs(title = var_name)
+    ggtitle(var_name)
 }
