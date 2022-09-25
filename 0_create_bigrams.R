@@ -25,8 +25,9 @@ create_bigram <- function(dataset, input_var){
       output = bigram,
       input =   {{input_var}}  ,
       token = "ngrams",
-      n = 2
-    )
+      n = 2) %>% 
+    mutate(input = {{input_var}})
+    
   
 }
 
