@@ -31,5 +31,6 @@ visualize_bigrams <- function(bigrams, quartil) {
     geom_edge_link(aes(edge_alpha = n), show.legend = FALSE, arrow = a) +
     geom_node_point(color = "lightblue", size = 5) +
     geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
-    theme_void()
+    theme_void() +
+    labs(title = var_name)
 }
