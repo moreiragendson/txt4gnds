@@ -10,12 +10,19 @@ library(ggraph)
 
 #' @param dataset texto em formato tidy
 count_bigrams <- function(dataset) {
+  
+  var_name <- dataset %>% 
+    pull(input) %>% 
+    unique()
+  
+  
   dataset %>%
     separate(bigram, c("word1", "word2"), sep = " ") %>%
     filter(!word1 %in% stopwords::data_stopwords_nltk$pt,
            !word2 %in% stopwords::data_stopwords_nltk$pt,
            !is.na(word1) & !is.na(word2)) %>%
-    count(word1, word2, sort = TRUE)
+    count(word1, word2, sort = TRUE) %>% 
+    mutate(var_name = var_name)
 }
 #' Visualizr grafos orientados de bi-grams
 #' 
