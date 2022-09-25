@@ -25,7 +25,7 @@ visualize_bigrams <- function(bigrams) {
   a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
   
   bigrams %>%
-    filter(n >= quantile(bigrams$n, probs = 0.75)) %>% 
+    filter(n >= quantile(n, probs = 0.99)) %>% 
     graph_from_data_frame() %>%
     ggraph(layout = "fr") +
     geom_edge_link(aes(edge_alpha = n), show.legend = FALSE, arrow = a) +
