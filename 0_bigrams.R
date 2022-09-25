@@ -11,7 +11,6 @@ library(ggraph)
 #' @param dataset texto em formato tidy
 count_bigrams <- function(dataset) {
   dataset %>%
-    unnest_tokens(bigram, text, token = "ngrams", n = 2) %>%
     separate(bigram, c("word1", "word2"), sep = " ") %>%
     filter(!word1 %in% stopwords::data_stopwords_nltk$pt,
            !word2 %in% stopwords::data_stopwords_nltk$pt,
