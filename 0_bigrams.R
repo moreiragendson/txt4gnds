@@ -20,12 +20,12 @@ count_bigrams <- function(dataset) {
 #' Visualizr grafos orientados de bi-grams
 #' 
 #' @param bigrams estatística de contagem de bi-grams
-visualize_bigrams <- function(bigrams) {
+visualize_bigrams <- function(bigrams, quartil) {
   set.seed(2016)
   a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
   
   bigrams %>%
-    filter(n >= quantile(n, probs = 0.99)) %>% 
+    filter(n >= quantile(n, probs =   {{quartil}}  )) %>% 
     graph_from_data_frame() %>%
     ggraph(layout = "fr") +
     geom_edge_link(aes(edge_alpha = n), show.legend = FALSE, arrow = a) +
